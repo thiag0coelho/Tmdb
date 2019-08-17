@@ -32,4 +32,14 @@ export class MovieController {
       throw new HttpException('There was an error', HttpStatus.BAD_REQUEST);
     }
   }
+
+  @Get('search/:page/:name')
+  async searchByName(@Param('page') page: number = 1, @Param('name') name: string) {
+    try {
+      const response = await this.service.searchByName(page, name);
+
+      return response.data;
+    } catch (error) {
+      throw new HttpException('There was an error', HttpStatus.BAD_REQUEST);
+    }
 }
