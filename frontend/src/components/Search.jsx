@@ -27,22 +27,25 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Header({ setSearchText, searchText, setMovies }) {
+export default function Search({ setSearchText, searchText, setMovies }) {
   const classes = useStyles();
 
-  async function resetSearch() {
+  const resetSearch = async () => {
     setSearchText("");
-  }
+  };
 
   const debouncedSearchText = useDebounce(searchText, 1300);
 
   useEffect(() => {
-    if (searchText && searchText.length >= 3) {
+    const handleSearchText = () => {
       setMovies([]);
-      setSearchText(searchText);
-    } else {
-      setMovies([]);
-    }
+
+      if (searchText && searchText.length >= 3) {
+        setSearchText(searchText);
+      }
+    };
+
+    handleSearchText();
   }, [debouncedSearchText]);
 
   return (
@@ -57,7 +60,7 @@ export default function Header({ setSearchText, searchText, setMovies }) {
       <IconButton
         className={classes.iconButton}
         aria-label="search"
-        onClick={() => resetSearch()}
+        onClick={resetSearch}
       >
         <Close />
       </IconButton>

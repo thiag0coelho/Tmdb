@@ -4,11 +4,11 @@ import Header from "../components/Header";
 import Search from "../components/Search";
 import movieService from "../services/MovieService";
 
-function SearchMovies() {
+const SearchMovies = () => {
   const [movies, setMovies] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  async function loadData(page) {
+  const loadData = async (page) => {
     if (!searchText) return;
     const response = await movieService.searchMovies(page, searchText);
 
