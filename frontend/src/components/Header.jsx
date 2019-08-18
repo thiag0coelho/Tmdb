@@ -17,10 +17,10 @@ function Header(props) {
     <Grid>
       <Button
         color={
-          props.location.pathname == "/" ||
-          props.location.pathname == "/upcoming"
+          props.location.pathname === "/" ||
+          props.location.pathname === "/upcoming"
             ? "primary"
-            : ""
+            : "default"
         }
         component={UpcomingMoviesLink}
         to="/"
@@ -29,7 +29,7 @@ function Header(props) {
         Upcoming Movies
       </Button>
       <Button
-        color={props.location.pathname == "/search" ? "primary" : ""}
+        color={props.location.pathname === "/search" ? "primary" : "default"}
         component={SearchLink}
         size={"large"}
       >

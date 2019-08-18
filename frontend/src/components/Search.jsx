@@ -27,12 +27,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Header({
-  setSearchText,
-  searchText,
-  loadData,
-  setMovies
-}) {
+export default function Header({ setSearchText, searchText, setMovies }) {
   const classes = useStyles();
 
   async function resetSearch() {

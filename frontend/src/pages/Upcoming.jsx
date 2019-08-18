@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import MovieCardList from "../components/MovieCardList";
 import Header from "../components/Header";
-import api from "../services/api";
+import movieService from "../services/MovieService";
 
 function Upcoming() {
   const [movies, setMovies] = useState([]);
 
   async function loadData(page) {
-    const response = await api.get(`/movies/upcoming/${page}`);
-
-    setMovies(movies.concat(response.data.results));
+    const response = await movieService.getUpcomingMovies(page);
+    setMovies(movies.concat(response));
   }
 
   return (
     <div>
       <Header />
-      <MovieCardList movies={movies} loadData={loadData} initialLoad={true}/>
+      <MovieCardList movies={movies} loadData={loadData} initialLoad={true} />
     </div>
   );
 }

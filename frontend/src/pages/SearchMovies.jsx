@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import MovieCardList from "../components/MovieCardList";
 import Header from "../components/Header";
 import Search from "../components/Search";
-import api from "../services/api";
+import movieService from "../services/MovieService";
 
-function MoviesSearch() {
+function SearchMovies() {
   const [movies, setMovies] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   async function loadData(page) {
     if (!searchText) return;
-    const response = await api.get(`/movies/search/${page}/${searchText}`);
+    const response = await movieService.searchMovies(page, searchText);
 
-    setMovies(movies.concat(response.data.results));
+    setMovies(movies.concat(response));
   }
 
   return (
@@ -31,4 +31,4 @@ function MoviesSearch() {
   );
 }
 
-export default MoviesSearch;
+export default SearchMovies;
