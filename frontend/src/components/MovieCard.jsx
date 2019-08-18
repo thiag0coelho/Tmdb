@@ -23,7 +23,7 @@ export default function MovieCard({ movie }) {
   const [openModal, setOpenModal] = React.useState(false);
 
   return (
-    <div>
+    <React.Fragment>
       <Card className={classes.card} onClick={() => setOpenModal(true)}>
         <CardActionArea>
           <CardMedia
@@ -53,6 +53,6 @@ export default function MovieCard({ movie }) {
         </CardActionArea>
       </Card>
       <MovieDetailModal openModal={openModal} setOpenModal={setOpenModal} movie={movie}/>
-    </div>
+    </React.Fragment>
   );
 }
