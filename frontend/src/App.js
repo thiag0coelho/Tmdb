@@ -1,10 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Upcoming from './pages/Upcoming'
+import { Container } from "@material-ui/core";
 
 function App() {
   return (
-    <div>
-    </div>
+    <Container>
+      <Upcoming />
+    </Container>
   );
 }
 

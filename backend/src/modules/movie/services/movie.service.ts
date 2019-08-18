@@ -22,4 +22,10 @@ export class MovieService {
 
     return this.httpService.get(url).toPromise();
   }
+
+  getAllGenres(): Promise<any> {
+    const url = `${TMDB_API_ENDPOINT}genre/movie/list?api_key=${TMDB_API_KEY}`;
+
+    return this.httpService.get(url).toPromise();
+  }
 }

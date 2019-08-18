@@ -18,18 +18,18 @@ export class MovieController {
 
       return response.data;
     } catch (error) {
-      throw new HttpException(error, HttpStatus.BAD_REQUEST);
+      throw new HttpException(error.status_message, HttpStatus.BAD_REQUEST);
     }
   }
 
   @Get('/upcoming/:page')
-  async getUpcomingMovies(@Param('page') page: number = 1) {
+  async getUpcomingMovies(@Param('page') page: number) {
     try {
       const response = await this.service.getUpcomingMovies(page);
 
       return response.data;
     } catch (error) {
-      throw new HttpException('There was an error', HttpStatus.BAD_REQUEST);
+      throw new HttpException(error.status_message, HttpStatus.BAD_REQUEST);
     }
   }
 
@@ -43,7 +43,18 @@ export class MovieController {
 
       return response.data;
     } catch (error) {
-      throw new HttpException('There was an error', HttpStatus.BAD_REQUEST);
+      throw new HttpException(error.status_message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @Get('genres')
+  async getGenres() {
+    try {
+      const response = await this.service.getAllGenres();
+
+      return response.data;
+    } catch (error) {
+      throw new HttpException(error.status_message, HttpStatus.BAD_REQUEST);
     }
   }
 }
