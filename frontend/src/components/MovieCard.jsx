@@ -8,10 +8,12 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345
+    maxWidth: 345,
+    minWidth: 292
   },
   media: {
-    height: 430
+    height: 430,
+    backgroundColor: "#F5F5F5"
   }
 });
 
@@ -23,8 +25,12 @@ export default function MovieCard({ movie }) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={`https://image.tmdb.org/t/p/w500/${movie.poster_path ||
-            movie.backdrop_path}`}
+          image={
+            movie.poster_path || movie.backdrop_path
+              ? `https://image.tmdb.org/t/p/original/${movie.poster_path ||
+                  movie.backdrop_path}`
+              : 'https://via.placeholder.com/300x500.png/F5F5F5/0e0e0e/?text=No%20available%20poster'
+          }
           title={movie.original_title}
         />
         <CardContent>

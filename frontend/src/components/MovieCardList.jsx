@@ -1,37 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import InfiniteScroll from "react-infinite-scroller";
 import MovieCard from "../components/MovieCard";
-import api from "../services/api";
 
 const useStyles = makeStyles({
   gridCard: {
     display: "flex",
     justifyContent: "center"
+  },
+  loader: {
+    paddingTop: "16px",
+    paddingBottom: "16px"
   }
 });
 
-function MovieCardList() {
+function MovieCardList({ movies, loadData, initialLoad }) {
   const classes = useStyles();
-  const [movies, setMovies] = useState([]);
-
-  async function loadData(page) {
-    const response = await api.get(`/movies/upcoming/${page}`);
-
-    setMovies(movies.concat(response.data.results));
-  }
 
   return (
     <InfiniteScroll
       pageStart={0}
-      initialLoad={true}
+      initialLoad={initialLoad}
       loadMore={loadData}
       hasMore={true || false}
       loader={
-        <div className="loader" key={0}>
-          Loading ...
-        </div>
+        <Grid className={classes.loader} key={1}>
+          <Skeleton variant="rect" width={345} height={500} />
+          <Skeleton width={130} />
+        </Grid>
       }
     >
       <Grid
