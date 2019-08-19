@@ -72,7 +72,7 @@ export default function MovieDetailModal({ openModal, setOpenModal, movie }) {
                     {movie.release_date}
                   </Typography>
                   <Typography gutterBottom variant="body2" component="p">
-                    Action, Fantasy
+                    {movie.genres}
                   </Typography>
                   <Typography
                     variant="body2"
