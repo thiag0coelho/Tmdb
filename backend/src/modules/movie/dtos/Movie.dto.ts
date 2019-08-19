@@ -1,4 +1,4 @@
-export class UpcomingMovieDto {
+export class MovieDto {
   constructor(
     public id: string,
     public original_title: string,

@@ -44,7 +44,7 @@ export default function MovieCard({ movie }) {
               {movie.release_date}
             </Typography>
             <Typography gutterBottom variant="body2" component="p">
-              Action, Fantasy
+              {movie.genres}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               {movie.overview}

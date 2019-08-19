@@ -7,7 +7,7 @@ const MovieService = {
   },
   searchMovies: async function(page, searchText) {
     const response = await api.get(`/movies/search/${page}/${searchText}`);
-    return response.data.results;
+    return response.data;
   }
 };
 

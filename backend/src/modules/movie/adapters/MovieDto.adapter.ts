@@ -1,16 +1,16 @@
 import { Observable } from 'rxjs';
-import { UpcomingMovieDto } from '../dtos/UpcomingMovie.dto';
+import { MovieDto } from '../dtos/Movie.dto';
 import { GenreDto } from '../dtos/Genre.dto';
 
 export class UpcomingMovieAdapter {
-  private readonly movies: UpcomingMovieDto[] = [];
+  private readonly movies: MovieDto[] = [];
 
   constructor(
     private readonly list: Observable<any>,
     private readonly genres: Promise<GenreDto[]>,
   ) {}
 
-  async adapt(): Promise<UpcomingMovieDto[]> {
+  async adapt(): Promise<MovieDto[]> {
     const genreList = await this.genres;
 
     this.list.forEach(item => {
@@ -19,7 +19,7 @@ export class UpcomingMovieAdapter {
       });
 
       this.movies.push(
-        new UpcomingMovieDto(
+        new MovieDto(
           item.id,
           item.original_title,
           item.overview,

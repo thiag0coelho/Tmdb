@@ -1,9 +1,9 @@
 import { Injectable, HttpService } from '@nestjs/common';
 import { TMDB_API_ENDPOINT, TMDB_API_KEY } from '../../../constants';
 import { map } from 'rxjs/operators';
-import { UpcomingMovieAdapter } from '../adapters/UpcomingMovie.adapter';
+import { UpcomingMovieAdapter } from '../adapters/MovieDto.adapter';
 import { GenreAdapter } from '../adapters/Genre.adapter';
-import { UpcomingMovieDto } from '../dtos/UpcomingMovie.dto';
+import { MovieDto } from '../dtos/Movie.dto';
 import { GenreDto } from '../dtos/Genre.dto';
 import { Observable } from 'rxjs';
 
@@ -20,7 +20,7 @@ export class MovieService {
     return this.httpService.get(url).toPromise();
   }
 
-  getUpcomingMovies(page: number): Observable<Promise<UpcomingMovieDto[]>> {
+  getUpcomingMovies(page: number): Observable<Promise<MovieDto[]>> {
     const url = `${TMDB_API_ENDPOINT}movie/upcoming?api_key=${TMDB_API_KEY}&page=${page}`;
     const result = this.httpService
       .get(url)
@@ -33,10 +33,17 @@ export class MovieService {
     return result;
   }
 
-  searchByName(page: number, name: string): Promise<any> {
+  searchByName(page: number, name: string): Observable<Promise<MovieDto[]>> {
     const url = `${TMDB_API_ENDPOINT}search/movie?api_key=${TMDB_API_KEY}&page=${page}&query=${name}&include_adult=false`;
+    const result = this.httpService
+      .get(url)
+      .pipe(
+        map(response =>
+          new UpcomingMovieAdapter(response.data.results, this.genres).adapt(),
+        ),
+      );
 
-    return this.httpService.get(url).toPromise();
+    return result;
   }
 
   getAllGenres(): Promise<GenreDto[]> {
