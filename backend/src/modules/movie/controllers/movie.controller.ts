@@ -27,7 +27,7 @@ export class MovieController {
     try {
       const response = await this.service.getUpcomingMovies(page);
 
-      return response.data;
+      return response;
     } catch (error) {
       throw new HttpException(error.status_message, HttpStatus.BAD_REQUEST);
     }
@@ -40,17 +40,6 @@ export class MovieController {
   ) {
     try {
       const response = await this.service.searchByName(page, name);
-
-      return response.data;
-    } catch (error) {
-      throw new HttpException(error.status_message, HttpStatus.BAD_REQUEST);
-    }
-  }
-
-  @Get('genres')
-  async getGenres() {
-    try {
-      const response = await this.service.getAllGenres();
 
       return response.data;
     } catch (error) {
