@@ -4,6 +4,7 @@
   "exec": "node dist/main",
   "env": {
     "NODE_ENV": "development",
-    "TMDB_KEY": "1f54bd990f1cdfb230adb312546d765d"
+    "TMDB_KEY": "1f54bd990f1cdfb230adb312546d765d",
+    "PORT": 3001
   }
 }
