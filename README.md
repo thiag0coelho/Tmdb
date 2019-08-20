@@ -50,9 +50,8 @@ yarn build
 * Constants that keeps important things centralized and decrease duplicity.
 * Focused on keep the user interface responsive
 * Focused on creating some pure function components
-* Even though I don't fully yet understand Hooks, I tried to utilize it in some places (there were some weird warnings).
+* Even though I don't fully yet understand Hooks, I tried to utilize it in some places. In Search page I've tried to use debounce hook for text input + infinite scroll, each one calling one different useEffect which didn't work well. I replaced debounce hook for a button to get search term.
 * I've used High Order Component on Header to use React Router's withRouter.
-* Used a hook for debounce on Search Text Input to avoid spamming requests.
 * Thought about using Redux and even imported it, but it might be over engineer
 * The react app is working as a PWA
 * The api return some duplicated movies e.g. page 4 and 5 for 'test'. If I use .map((element, index)=> then I would be showing duplicated movie cards. I opt to keep the error.

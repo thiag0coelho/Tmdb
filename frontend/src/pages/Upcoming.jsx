@@ -8,7 +8,7 @@ function Upcoming() {
 
   async function loadData(page) {
     const response = await movieService.getUpcomingMovies(page);
-    setMovies(movies.concat(response));
+    setMovies([...movies, ...response]);
   }
 
   return (

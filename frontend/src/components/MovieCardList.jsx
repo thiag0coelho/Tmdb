@@ -24,7 +24,7 @@ function MovieCardList({ movies, loadData, initialLoad }) {
       pageStart={0}
       initialLoad={initialLoad}
       loadMore={loadData}
-      hasMore={true || false}
+      hasMore={true}
       loader={
         <Grid className={classes.loader} key={1}>
           <Skeleton variant="rect" width={345} height={500} />
