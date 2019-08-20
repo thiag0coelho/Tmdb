@@ -55,3 +55,5 @@ yarn build
 * Used a hook for debounce on Search Text Input to avoid spamming requests.
 * Thought about using Redux and even imported it, but it might be over engineer
 * The react app is working as a PWA
+* The api return some duplicated movies e.g. page 4 and 5 for 'test'. If I use .map((element, index)=> then I would be showing duplicated movie cards. I opt to keep the error.
+* Upcoming movies endpoint is returning already released movies. Is it a api bug or something I should be looking to hide movie cards with release date < today
