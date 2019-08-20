@@ -54,3 +54,4 @@ yarn build
 * I've used High Order Component on Header to use React Router's withRouter.
 * Used a hook for debounce on Search Text Input to avoid spamming requests.
 * Thought about using Redux and even imported it, but it might be over engineer
+* The react app is working as a PWA
