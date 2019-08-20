@@ -1,7 +1,7 @@
 import { Injectable, HttpService } from '@nestjs/common';
 import { TMDB_API_ENDPOINT, TMDB_API_KEY } from '../../../constants';
 import { map } from 'rxjs/operators';
-import { UpcomingMovieAdapter } from '../adapters/MovieDto.adapter';
+import { MovieAdapter } from '../adapters/Movie.adapter';
 import { GenreAdapter } from '../adapters/Genre.adapter';
 import { MovieDto } from '../dtos/Movie.dto';
 import { GenreDto } from '../dtos/Genre.dto';
@@ -26,7 +26,7 @@ export class MovieService {
       .get(url)
       .pipe(
         map(response =>
-          new UpcomingMovieAdapter(response.data.results, this.genres).adapt(),
+          new MovieAdapter(response.data.results, this.genres).adapt(),
         ),
       );
 
@@ -39,7 +39,7 @@ export class MovieService {
       .get(url)
       .pipe(
         map(response =>
-          new UpcomingMovieAdapter(response.data.results, this.genres).adapt(),
+          new MovieAdapter(response.data.results, this.genres).adapt(),
         ),
       );
 

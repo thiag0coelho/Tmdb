@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { MovieDto } from '../dtos/Movie.dto';
 import { GenreDto } from '../dtos/Genre.dto';
 
-export class UpcomingMovieAdapter {
+export class MovieAdapter {
   private readonly movies: MovieDto[] = [];
 
   constructor(
