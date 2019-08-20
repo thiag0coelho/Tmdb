@@ -1,5 +1,4 @@
 # Get the project running
-***
 #### Backend
 ```
 yarn install
@@ -12,7 +11,6 @@ yarn start
 ```
 
 ## Build to production
-***
 #### Backend
 ```
 yarn build
@@ -23,7 +21,6 @@ yarn build
 ```
 
 # Packages
-***
 ## Backend
 
 * NestJS - Great for simple applications. Helps by providing a way to develop a nice and clean architecture. Also provides many good defaults like:
@@ -47,7 +44,6 @@ yarn build
 * ESLint - A nice linter to work with react.
 
 # Architecture & decisions
-***
 * I've choosen NestJS as I'm learning it lately. I've found it ease to architect an application. A simple monolithic application was enough for this project. For more robust applications I would used like Asp.Net core to backend, and use React & Redux and other tools on frontend.
 * While requesting upcoming movies, the api did not provide genre names, so I needed to keep a property on the service constructor to be able to use this collection of genres on each request.
 * I've used adapter both to return only the data I needed to return and to include the genres string. Returning only the data needed helps with network traffic and performance.
